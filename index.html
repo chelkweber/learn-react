@@ -7,16 +7,42 @@
 <script type="text/babel">
   const rootElement = document.getElementById('root')
   
-  //props
-  const Message = props => <div>{props.children}</div>
-        
-  const element = (
-    <div className="container">
-      <Message>Hello World
-        <Message>Goodbye World</Message>
-      </Message>
-    </div>
-  )
+////props
+//  const Message = props => <div>{props.children}</div>
+//        
+//  const element = (
+//    <div className="container">
+//      <Message>Hello World
+//        <Message>Goodbye World</Message>
+//      </Message>
+//    </div>
+//  )
+
+//Prop Validation
+  function SayHello(props) {
+    return (
+      <div>
+        Hello {props.firstName} {props.lastName}!
+      </div>
+    )
+  }
+
+  const PropTypes = {
+    string(props, propName, componentName) {
+      if (typeof props[propName] !== 'string') {
+        return new Error('Hey, ${propName} should be a string')
+      }
+    }
+  }
   
-  ReactDOM.render(element, rootElement);
+  SayHello.propTypes = {
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+  }
+
+  
+  ReactDOM.render(
+    <SayHello firstName={true} lastName={false} />, rootElement
+  );
+
 </script>
