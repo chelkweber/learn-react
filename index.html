@@ -8,11 +8,22 @@
 <script type="text/babel">
   // conditional rendering
   function Message({message}) {
-    if (!message) {
-      return <div>No Message</div>
-    } else { 
-      return <div>{message}</div>
-    }
+    return (
+      <div>
+        {message 
+          ? React.createElement(
+            'div',
+            null,
+            message
+          )
+          : React.createElement(
+            'div',
+            null,
+            'no message'
+          )
+        }
+      </div>
+    )
   }
 
   ReactDOM.render(
