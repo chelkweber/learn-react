@@ -6,21 +6,17 @@
 <script type="application/javascript" src="https://unpkg.com/prop-types@15.6.2/prop-types.js"></script>
 <script type="application/javascript" src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
 <script type="text/babel">
-  // conditional rendering
-  function Message({message}) {
-    return (
-      <div>
-        {message 
-          ? <div>{message}</div>
-          : <div>No Message</div>
-        }
-      </div>
-    )
+  //Rerender 
+
+  const rootElement = document.getElementById('root');
+
+  function tick() {
+    const time = new Date().toLocaleTimeString()
+    const element = <div>It is {time}</div>
+    ReactDOM.render(element, rootElement)
   }
 
-  ReactDOM.render(
-    <Message message='test' />,
-    document.getElementById('root')
-  )
+  tick();
+  setInterval(tick, 1000);
 
 </script>
