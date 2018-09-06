@@ -11,23 +11,15 @@
     return (
       <div>
         {message 
-          ? React.createElement(
-            'div',
-            null,
-            message
-          )
-          : React.createElement(
-            'div',
-            null,
-            'no message'
-          )
+          ? <div>{message}</div>
+          : <div>No Message</div>
         }
       </div>
     )
   }
 
   ReactDOM.render(
-    <Message message={null} />,
+    <Message message='test' />,
     document.getElementById('root')
   )
 
