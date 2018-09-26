@@ -6,14 +6,25 @@
 <script type="application/javascript" src="https://unpkg.com/prop-types@15.6.2/prop-types.js"></script>
 <script type="application/javascript" src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
 <script type="text/babel">
-const className = 'box box--small'  
-const props = {
-  className,
-  style: {paddingLeft: 20}
+
+function Box({style, className = '', ...rest}) {
+  return (
+    <div 
+      className={'box ${className}'}
+      style={{paddingLeft: 20, ...style}}
+      {...rest}
+    />
+  )
 }
+
 const element = (
     <div>
-      <div {...props}>box</div>
+      <Box 
+        className="boxsmall" 
+        style={{backgroundColor: 'lightblue'}}
+      >
+        small box
+      </Box>
     </div>
   )
   
