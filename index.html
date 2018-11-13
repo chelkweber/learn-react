@@ -27,6 +27,7 @@ class StopWatch extends React.Component {
     )
   }
   clearState = () => {
+    clearInterval(this.timer)
     this.setState({lapse:0, running:false})
   }
   render() {
