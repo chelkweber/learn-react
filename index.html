@@ -7,53 +7,31 @@
 <script type="application/javascript" src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
 <script type="text/babel">
 
-const state = {eventCount: 0, username: ''}
-
-function App() {
+function StopWatch() {
+  const buttonStyles = {
+    border: '1px solid #ccc',
+    background: '#fff',
+    fontSize: '2em',
+    padding: 15,
+    margin: 5,
+    width: 200
+  }
   return (
-  <div>
-    <p>
-      There have been {state.eventCount} events
-    </p>
-    <p>
-      <button onClick={increment}>Click Here</button>
-    </p>
-    <p>You typed: {state.username}</p>
-    <p>
-      <input 
-        onChange={updateUsername}
-      />
-    </p>
-  </div>)
-}
-
-//setState({eventCount:10}) 
-//setState({username:'Chelk'})
-
-function updateUsername(event) {
-  console.log(event.nativeEvent)
-  setState({
-    username: event.target.value,
-  })
-}
-
-function increment() {
-  setState({
-    eventCount: state.eventCount + 1
-  })
-}
-
-function setState(newState) {
-  Object.assign(state, newState)
-  renderApp()
-}
-
-function renderApp() {
-  ReactDOM.render(
-    <App />,
-    document.getElementById('root')
+    <div style= {{textAlign: 'center'}}>
+      <label
+        style={{fontSize: '5em', display: 'block'}}
+      >
+        0ms
+      </label>
+      <button style={buttonStyles}>Start</button>
+      <button style={buttonStyles}>Clear</button>
+    </div>
   )
 }
 
-renderApp()
+const element = <StopWatch />
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+)      
 </script>
