@@ -21,10 +21,7 @@ function App() {
     <p>You typed: {state.username}</p>
     <p>
       <input 
-        onChange={event => 
-          setState({
-            username: event.target.value,
-          })}
+        onChange={updateUsername}
       />
     </p>
   </div>)
@@ -32,6 +29,13 @@ function App() {
 
 //setState({eventCount:10}) 
 //setState({username:'Chelk'})
+
+function updateUsername(event) {
+  console.log(event.nativeEvent)
+  setState({
+    username: event.target.value,
+  })
+}
 
 function increment() {
   setState({
