@@ -16,19 +16,28 @@ function App() {
       There have been {state.eventCount} events
     </p>
     <p>
-      <button onClick={() => setState({
-          eventCount: state.eventCount + 1,
-        })}>Click Here</button>
+      <button onClick={increment}>Click Here</button>
     </p>
     <p>You typed: {state.username}</p>
     <p>
-      <input />
+      <input 
+        onChange={event => 
+          setState({
+            username: event.target.value,
+          })}
+      />
     </p>
   </div>)
 }
 
 //setState({eventCount:10}) 
 //setState({username:'Chelk'})
+
+function increment() {
+  setState({
+    eventCount: state.eventCount + 1
+  })
+}
 
 function setState(newState) {
   Object.assign(state, newState)
