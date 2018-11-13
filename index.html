@@ -8,7 +8,27 @@
 <script type="text/babel">
 
 class StopWatch extends React.Component {
-  state = {lapse: 2000, running:false}
+  state = {lapse: 0, running:false}
+  handleRunClick = () => {
+    this.setState(state => {
+     if (state.running) {
+       clearInterval(this.timer)
+     } else {
+      const startTime = Date.now() - this.state.lapse
+      this.timer = setInterval(() => {
+        this.setState({
+          lapse: Date.now() - startTime
+        })
+      })
+    }
+      return {running: !state.running}
+    }
+      
+    )
+  }
+  clearState = () => {
+    this.setState({lapse:0, running:false})
+  }
   render() {
     const {lapse, running} = this.state
     const buttonStyles = {
@@ -26,8 +46,11 @@ class StopWatch extends React.Component {
         >
           {lapse}ms
         </label>
-        <button style={buttonStyles}>{running ? 'Stop' : 'Start'}</button>
-        <button style={buttonStyles}>Clear</button>
+        <button onClick={this.handleRunClick} 
+                style={buttonStyles}>{running ? 'Stop' : 'Start'}
+        </button>
+        <button onClick={this.clearState}
+                style={buttonStyles}>Clear</button>
       </div>
     )
   }
