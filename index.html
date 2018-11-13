@@ -29,9 +29,13 @@ function setState(newState) {
   Object.assign(state, newState)
   renderApp()
 }
-  
+
+function renderApp() {
   ReactDOM.render(
     <App />,
     document.getElementById('root')
   )
+}
+
+renderApp()
 </script>
