@@ -16,7 +16,9 @@ function App() {
       There have been {state.eventCount} events
     </p>
     <p>
-      <button>Click Here</button>
+      <button onClick={() => setState({
+          eventCount: state.eventCount + 1,
+        })}>Click Here</button>
     </p>
     <p>You typed: {state.username}</p>
     <p>
@@ -24,6 +26,9 @@ function App() {
     </p>
   </div>)
 }
+
+//setState({eventCount:10}) 
+//setState({username:'Chelk'})
 
 function setState(newState) {
   Object.assign(state, newState)
