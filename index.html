@@ -11,9 +11,14 @@
       super(...args)
       this.state = {count: 0}
     }
+    handleClick() {
+      this.setState(({count}) => ({
+        count: count + 1
+      }))
+    }
     render() {
       return (
-        <button onClick={this.handleClick}>
+        <button onClick={this.handleClick.bind(this)}>
           {this.state.count}
         </button>
       )
